@@ -17,18 +17,18 @@ export default function Person() {
         </div>
         <picture>
           <source
-            srcSet="src\images\shared\mobile\image-best-gear.jpg"
+            srcSet="/images/shared/mobile/image-best-gear.jpg"
             media="(max-width:480px)"
           />
           <source
-            srcSet="src\images\shared\tablet\image-best-gear.jpg"
+            srcSet="/images/shared/tablet/image-best-gear.jpg"
             media="(max-width:990px)and (min-width:480px)"
           />
           <source
-            srcSet="src\images\shared\desktop\image-best-gear.jpg"
+            srcSet="/images/shared/desktop/image-best-gear.jpg"
             media="(min-width:990px)"
           />
-          <img src="src\images\shared\desktop\image-best-gear.jpg" alt="" />
+          <img src="/images/shared/desktop/image-best-gear.jpg" alt="" />
         </picture>
       </div>
     </section>

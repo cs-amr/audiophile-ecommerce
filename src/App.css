@@ -98,14 +98,7 @@ h6 {
     margin-inline: auto;
     width: min(1110px,calc(100%-4rem));
 }
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 1.2;
-    letter-spacing: 0.0625rem;
-    font-size: 0.8125rem;
-}
+
 @keyframes faddin {
     from {opacity: 0;}
     to {opacity: 1;}
@@ -172,7 +165,7 @@ header a.active {
   letter-spacing: .5rem;
 }
 .landing .container {
-  background: url("./images/home/desktop/image-hero.jpg");
+  background: url("/images/home/desktop/image-hero.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   text-align: left;
@@ -195,7 +188,7 @@ header a.active {
 .landing .container p {
 margin-bottom: 2rem;
 }
-.landing.container .link {
+.link {
   line-height: 1.2;
   display: inline-flex;
   align-items: center;
@@ -207,29 +200,44 @@ margin-bottom: 2rem;
   font-size: 0.8125rem;
   color: white;
   background-color: #D87D4A;
-  padding: 1rem 1.5rem;
+  padding: 1rem 1.5rem;}
+.link:hover{
+  background-color: #100e0d;
 }
-@media screen and (max-width:990px) and (min-width:480px) {
   .landing .container {
-    background : url("./images/home/tablet/image-hero.jpg");
-    text-align: center;
+    background : url("/images/home/desktop/image-hero.jpg");
+    text-align: left;
     background-position:50%;
     background-size: contain;
     background-repeat: no-repeat;
     padding-top: 128px;
+
   }
   .landing .container h2 {
     font-size: var(--x-large);
-    margin-inline:auto ;
+    margin-inline:0 auto ;
   }
   .landing .container h3,p {
-    margin-inline: auto;
+    margin-inline:0 auto ;
+
   }
-}
+  @media (max-width:990px) and (min-width:480px) {
+    .landing .container {
+      background : url("/images/home/tablet/image-hero.jpg");
+      background-repeat: no-repeat;
+      background-size: contain;
+    text-align: center;
+    background-position:50%;
+    }
+    .landing .container h2,p {
+      margin-inline: auto;
+    }
+    }
+
 @media screen and (max-width:480px) {
   .landing .container {
     padding-top: 96px;
-    background : url("./images/home/mobile/image-hero.jpg");
+    background : url("/images/home/mobile/image-hero.jpg");
     background-position:50%;
     text-align: center;
     background-repeat: no-repeat;
@@ -586,3 +594,49 @@ font-size: var(--large);
   }
 }
 /* _____________CategoryProduct_______________ */
+.category-product .container {
+  margin-block: 64px 120px ;
+  display: flex;
+  align-items: center;
+  gap: 125px;
+  max-height: 817px;
+}
+.category-product .container img {
+  object-fit: cover;
+  max-width: 540px;
+  border-radius: 0.5rem;
+  height: auto;
+}
+.category-product span {
+  color: var(--secondary-clr);
+  font-weight: 500;
+  letter-spacing: .4rem;
+}
+.category-product h3 {
+  color:black;
+  margin-block: 1rem;
+  line-height: 2rem;
+  font-weight: 900;
+  font-size: var(--medium);
+}
+.category-product p {
+  color:#8c8c8c;
+  margin-bottom: 2rem;
+}
+@media(max-width:990px) {
+.category-product .container {
+ width: 100%;
+flex-direction: column;
+text-align: center;
+gap: 2rem;
+}
+.category-product .container img {
+ max-width: 100%;
+}
+}
+@media screen and (min-width:1110px) {
+  .products .category-product:nth-child(2) .container{
+    flex-direction: row-reverse;
+  
+}
+}

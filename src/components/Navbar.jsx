@@ -7,11 +7,11 @@ export default function Navbar() {
       <div className="container">
         <img
           className="menu-icon"
-          src="src/images/shared/tablet/icon-hamburger.svg"
+          src="/images/shared/tablet/icon-hamburger.svg"
           alt="menu"
         />
         <Link to="/">
-          <img src="src\images\shared\desktop\logo.svg" alt="" />
+          <img src="/images/shared/desktop/logo.svg" alt="" />
         </Link>
         <nav>
           <ul>
@@ -31,7 +31,7 @@ export default function Navbar() {
         </nav>
         <img
           className="cart"
-          src="src\images\shared\desktop\icon-cart.svg"
+          src="/images/shared/desktop/icon-cart.svg"
           alt="cartIcon"
         />
         {/* <Categories/> */}

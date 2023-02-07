@@ -16,17 +16,17 @@ export default function Footer() {
         <ul className="icons">
           <li>
             <a href="https://www.facebook.com/">
-              <img src="src/images/shared/desktop/icon-facebook.svg" alt="" />
+              <img src="/images/shared/desktop/icon-facebook.svg" alt="" />
             </a>
           </li>
           <li>
             <a href="https://www.instagram.com/">
-              <img src="src\images\shared\desktop\icon-instagram.svg" alt="" />
+              <img src="/images/shared/desktop/icon-instagram.svg" alt="" />
             </a>
           </li>
           <li>
             <a href="https://www.twitter.com/">
-              <img src="src\images\shared\desktop\icon-twitter.svg" alt="" />
+              <img src="images/shared/desktop/icon-twitter.svg" alt="" />
             </a>
           </li>
         </ul>
