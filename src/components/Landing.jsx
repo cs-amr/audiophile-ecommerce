@@ -14,7 +14,7 @@ export default function Landing() {
           Experience natural, lifelike audio and exceptional build quality made
           for the passionate music enthusiast.
         </p>
-        <Link to="/headphones/xx99" className="link">
+        <Link to="headphones/xx99-mark-two-headphones" className="link">
           SEE PRODUCT
         </Link>
       </div>

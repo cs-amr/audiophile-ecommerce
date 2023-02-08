@@ -16,6 +16,7 @@ export default function CategoryProduct({ product }) {
     description,
     features,
     includedItems,
+    gallery,
     others,
   } = product;
   return (
@@ -39,7 +40,7 @@ export default function CategoryProduct({ product }) {
           </picture>
         </div>
         <div className="info">
-          {isNew && <span>NEW PRODUCT</span>}
+          {isNew && <span className="newProductSpan">NEW PRODUCT</span>}
           <h3>{name}</h3>
           <p>{description}</p>
           <Link to={slug} className="link">

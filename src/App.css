@@ -665,7 +665,7 @@ font-size: var(--large);
   border-radius: 0.5rem;
   height: auto;
 }
-.category-product span {
+.newProductSpan {
   color: var(--secondary-clr);
   font-weight: 500;
   letter-spacing: .4rem;
@@ -697,4 +697,216 @@ gap: 2rem;
     flex-direction: row-reverse;
   
 }
+}
+/* _____________productPage__________ */
+.product .product-details {
+  display: flex;
+  align-items: center;
+  padding-top:56px;
+  gap: 124px;
+
+}
+.product .product-details img {
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+.product .product-details .details {
+  width: 100%;
+}
+.product .details h3 {
+  color: black;
+  font-size:var(--large);
+  max-width: 80%;
+  text-transform: uppercase;
+  margin-block:1rem;
+}
+.product-details .price {
+  margin-block: 1rem;
+  display: block;
+  font-size: large;
+  font-weight: 700;
+}
+.addToCart {
+  display: flex;
+  gap: 10px;
+}
+.addToCart span{
+width: 20px;
+}
+.addToCart .link {
+  border: none; 
+  height: min-content;
+} 
+.addToCart div {
+  background-color: #f1f1f1;
+}
+.addToCart div:first-child button {
+  padding: .6rem;
+  border: none;
+  height: 100%;
+  background-color: #f1f1f1;
+  width: 46px;
+  height: 46px;
+
+}
+.addToCart div:first-child button:hover {
+  color: #D87D4A;
+  background-color: #bbbbbb;
+}
+.addToCart div:first-child span {
+  padding-inline: .5rem;
+}
+@media  screen and (max-width:990px)and (min-width:480px) {
+  .product .product-details {
+    gap: 40px;
+}
+.product .details h3 {
+font-size: var(--medium);
+}
+.product .details {
+  min-width: 60%;
+}
+.addToCart div:first-child span {
+  padding-inline: .1rem;
+}
+.product-details p {
+  margin-inline:0 ;
+}
+}
+@media  screen and (max-width:480px) {
+  .product .product-details {
+  flex-direction: column;
+  }
+  .product-details p {
+    margin-inline:0 ;
+  }
+
+  .addToCart div:first-child span {
+    padding-inline: .1rem;
+  }
+  .addToCart div:first-child button {
+    width: auto;
+  }
+}
+.product-info {
+  margin-top: 10rem;
+  display: flex;
+  gap: 3rem;
+}
+.product-info .features {
+  flex: 3;
+}
+.product-info .features h4{
+  color: #191919;
+  font-size: 2rem;
+}.product-info .features p{
+  margin-top: 24px;
+  max-width: 100%;
+}
+.inthebox {
+  flex: 1;
+}
+.inthebox h4 {
+  font-size: 2rem;
+  color: #191919;
+}
+.inthebox ul {
+  padding: 0;
+}
+.inthebox ul span:first-child {
+  margin-right: 10px;
+  color: #D87D4A;
+}
+@media  screen and (max-width:990px)and (min-width:480px) {
+  .product-info {
+    flex-direction: column;
+  }
+}
+@media  screen and (max-width:480px) {
+  .product-info {
+    flex-direction: column;
+    text-align: center;
+  }
+  .product-info  ul{
+    text-align: left;
+    margin-inline: auto;
+  }
+  .inthebox {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+  }
+  .inthebox ul {
+    margin-left: 5rem;
+  }
+
+}
+.product-images{
+  margin-block: 7.5rem;
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 40% 1fr;
+  grid-template-rows: 1fr 1fr ;
+  max-height: 600px;
+}
+.product-images  picture img  { border-radius:10px ; -webkit-border-radius:10px ; -moz-border-radius:10px ; -ms-border-radius:10px ; -o-border-radius:10px ;
+} 
+.product-images picture:first-child {
+  grid-template-columns:1 2;
+  grid-template-rows:1 2;
+}
+.product-images picture:nth-child(2) {
+  grid-template-columns:2 3;
+  grid-template-rows:1 2;
+}
+.product-images picture:nth-child(3) {
+  grid-template-columns:1 3;
+  grid-template-rows: 2 3;
+}
+@media screen and (max-width:480px) {
+  .product-images{
+    margin-top: 3rem;
+    display: grid;
+    gap: 1.25rem;
+    grid-template-rows: repeat(4 , auto) ;
+    grid-template-columns: auto;
+  }
+}
+
+
+.others {
+  margin-block: 7.5rem 11.5rem;
+}
+.others h4 {
+  font-size: 2rem;
+  color: #100e0d;
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.others .products {
+  display: flex;
+  gap: 30px;
+}
+.others .products .product {
+  text-align: center;
+}
+.others .product img {
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+.others .product span {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-block: 1rem;
+  display: block;
+}
+@media screen and (max-width:580px) {
+  .others .products {
+    flex-direction: column;
+  }
 }
