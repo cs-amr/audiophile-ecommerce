@@ -114,7 +114,7 @@ header .menu-icon{
 header img {
     cursor: pointer;
 }
-header .container {
+header .container:first-child {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -153,6 +153,63 @@ header a.active {
 }
 .icons img {
   width: 40px;
+}
+@media screen and (min-width:1110px) {
+  nav.nav {
+    display: none;
+  }
+  
+}
+  header  .container{
+    position: relative;
+  }
+
+  header .categories {
+    padding-inline:  0; 
+    width: 100%;
+  } 
+  nav.nav .categories .container {
+    padding-inline: 0;
+  }
+  nav.nav {
+    padding-block: 143px 80px;
+    background-color: white;
+    width: 100%;
+    display: block;
+    position: absolute;
+    top: -800px;
+    z-index: 1;
+    left: 0;
+    border-bottom-left-radius:10px ;
+    border-bottom-right-radius:10px ;
+    transition: all 1s;
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    -ms-transition: all 1s;
+    -o-transition: all 1s;
+}
+  nav.nav.open{
+    top: 60px;
+
+  }
+  nav.nav ul {
+    width: 100%;
+    margin: 0;
+  }
+  nav.nav .container{
+    border: none;
+}
+@media screen and (max-width:480px) {
+  nav.nav {
+    padding-block: 355px 330px;
+    background-color: white;
+    top: -800px;
+  }
+
+  nav.nav.open{
+    top: 60px;
+
+  }
 }
 /* _____________landing_____________ */
 .landing {
@@ -554,6 +611,7 @@ footer {
   margin-top: 200px;
   background-color: #191919;
 }
+footer header nav.nav {display: none;}
 footer header .container {
   border: none;
   margin-top: 2rem;

@@ -42,7 +42,7 @@ export default function CategoryProduct({ product }) {
           {isNew && <span>NEW PRODUCT</span>}
           <h3>{name}</h3>
           <p>{description}</p>
-          <Link to={shortName} className="link">
+          <Link to={slug} className="link">
             SEE PRODUCT
           </Link>
         </div>
