@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import CategoryProduct from "./components/CategoryProduct";
-import { useDataContext } from "./DataContext";
+import CategoryProduct from "../components/CategoryProduct";
+import { useDataContext } from "../Context/DataContext";
 
 export function useFetchProducts(productCategory) {
   const data = useDataContext();

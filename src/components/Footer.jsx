@@ -1,8 +1,13 @@
+import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 export default function Footer() {
   return (
     <footer>
-      <Navbar />
+      <div className="container">
+        <Link to="/">
+          <img src="/images/shared/desktop/logo.svg" alt="" />
+        </Link>
+      </div>
       <div className="container">
         <div>
           <p>
@@ -26,7 +31,7 @@ export default function Footer() {
           </li>
           <li>
             <a href="https://www.twitter.com/">
-              <img src="images/shared/desktop/icon-twitter.svg" alt="" />
+              <img src="/images/shared/desktop/icon-twitter.svg" alt="" />
             </a>
           </li>
         </ul>

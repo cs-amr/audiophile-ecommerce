@@ -28,7 +28,7 @@ export default function Products() {
               Upgrade to premium speakers that are phenomenally built to deliver
               truly remarkable sound.
             </p>
-            <Link to="/" className="link">
+            <Link to="/speakers/zx9-speaker" className="link">
               SEE PRODUCT
             </Link>
           </div>
@@ -53,7 +53,7 @@ export default function Products() {
           </picture>
           <div>
             <h3>ZX7 SPEAKER</h3>
-            <Link to="/" className="link">
+            <Link to="/speakers/zx7-speaker" className="link">
               SEE PRODUCT
             </Link>
           </div>
@@ -77,8 +77,8 @@ export default function Products() {
             <img src="/images/home/mobile/image-earphones-yx1.jpg" alt="yx1" />
           </picture>
           <div>
-            <h3>yx1 SPEAKER</h3>
-            <Link to="/" className="link">
+            <h3>yx1 EARPHONES</h3>
+            <Link to="/earphones/yx1-earphones" className="link">
               SEE PRODUCT
             </Link>
           </div>

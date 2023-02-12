@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { useDataContext } from "../DataContext";
-
+import { useDataContext } from "../Context/DataContext";
+import Loading from "../components/Loading";
+import { useCart } from "../Context/CartContext";
 export default function Product() {
   const { productId } = useParams();
   const { products, isLoading } = useDataContext();
@@ -27,6 +28,29 @@ export default function Product() {
     others,
   } = product;
   const { first, second, third } = gallery;
+
+  const { cartItems, setCartItems } = useCart();
+  function handleClick() {
+    setCartItems((prev) => {
+      const exist = prev.find((item) => item.slug === slug);
+      if (exist) {
+        const items = prev.map((item) => {
+          if (item.slug === slug) {
+            return {
+              slug: slug,
+              productCount: productCount + item.productCount,
+            };
+          } else {
+            return item;
+          }
+        });
+        return items;
+      } else {
+        return [...prev, { slug: slug, productCount: productCount }];
+      }
+    });
+  }
+
   return (
     <section className="product">
       <div className="container">
@@ -65,7 +89,9 @@ export default function Product() {
                   +
                 </button>
               </div>
-              <button className="link">ADD TO CART</button>
+              <button className="link" onClick={handleClick}>
+                ADD TO CART
+              </button>
             </div>
           </div>
         </div>

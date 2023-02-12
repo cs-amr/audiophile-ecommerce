@@ -1,5 +1,5 @@
 import Head from "../components/Head";
-import { useFetchProducts } from "../useFetchProducts";
+import { useFetchProducts } from "../hooks/useFetchProducts";
 
 export default function Headphones() {
   const productsState = useFetchProducts("headphones");
