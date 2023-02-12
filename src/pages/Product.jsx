@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDataContext } from "../Context/DataContext";
 import Loading from "../components/Loading";
 import { useCart } from "../Context/CartContext";
@@ -28,7 +28,6 @@ export default function Product() {
     others,
   } = product;
   const { first, second, third } = gallery;
-
   const { cartItems, setCartItems } = useCart();
   function handleClick() {
     setCartItems((prev) => {
@@ -50,7 +49,7 @@ export default function Product() {
       }
     });
   }
-
+  const navigate = useNavigate();
   return (
     <section className="product">
       <div className="container">
@@ -73,7 +72,7 @@ export default function Product() {
               <div>
                 <button
                   onClick={() => {
-                    if (productCount !== 0) {
+                    if (productCount > 1) {
                       setProductCount((prevCount) => prevCount - 1);
                     }
                   }}
@@ -164,9 +163,14 @@ export default function Product() {
                     <img src={mobile} alt={product["name"]} />
                   </picture>
                   <span className="product-name">{product["name"]}</span>
-                  <Link to={product["slug"]} className="link">
+                  <button
+                    className="link"
+                    onClick={() => {
+                      navigate(product["slug"]);
+                    }}
+                  >
                     SEE PRODUCT
-                  </Link>
+                  </button>
                 </div>
               );
             })}

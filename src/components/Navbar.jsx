@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useCart } from "../Context/CartContext";
+import { useDataContext } from "../Context/DataContext";
 import Nav from "./Nav";
 
 export default function Navbar() {
@@ -11,6 +12,9 @@ export default function Navbar() {
     (productCount, item) => productCount + item.productCount,
     0
   );
+  const { products, isLoading } = useDataContext();
+  const total = getTotal(cartItems, products);
+  const navigate = useNavigate();
   return (
     <header>
       <div className="container">
@@ -72,27 +76,60 @@ export default function Navbar() {
             <div>
               <div className="cart-head">
                 <h4>CART({productCount})</h4>
-                <button>Remove All</button>
+                <button
+                  onClick={() => {
+                    setCartItems([]);
+                  }}
+                >
+                  Remove All
+                </button>
               </div>
               <ul className="cart-products">
-                <li>
-                  <img src="/images/cart/image-xx59-headphones.jpg" alt="" />
-                  <h5>
-                    <p>XX9 MK ii</p>
-                    <p>$2.999</p>
-                  </h5>
-                  <div className="btns">
-                    <button>-</button>
-                    <p>2</p>
-                    <button>+</button>
-                  </div>
-                </li>
+                {cartItems.map((item, index) => {
+                  const product = products.products.find(
+                    (productItem) => item.slug === productItem.slug
+                  );
+                  return (
+                    <li key={index}>
+                      <img src={product.cartImage} alt="" />
+                      <h5>
+                        <p>{product.shortName}</p>
+                        <p>${product.price * item.productCount}</p>
+                      </h5>
+                      <div className="btns">
+                        <button
+                          onClick={() => {
+                            handelDecrement(cartItems, setCartItems, product);
+                          }}
+                        >
+                          -
+                        </button>
+                        <p>{item.productCount}</p>
+                        <button
+                          onClick={() => {
+                            handelIncreament(cartItems, setCartItems, product);
+                          }}
+                        >
+                          +
+                        </button>
+                      </div>
+                    </li>
+                  );
+                })}
               </ul>
               <div className="total">
                 <p>Total</p>
-                <p>$6516</p>
+                <p>${total}</p>
               </div>
-              <div className="link">CHECKOUT</div>
+              <button
+                onClick={() => {
+                  navigate("/checkout");
+                  setIsCartOpen(false);
+                }}
+                className="link"
+              >
+                CHECKOUT
+              </button>
             </div>
           ) : (
             <p>Your Cart is Empty</p>
@@ -101,4 +138,44 @@ export default function Navbar() {
       </div>
     </header>
   );
+}
+
+export function getTotal(cartItems, products) {
+  const total = cartItems.reduce((total, current) => {
+    const product = products.products.find(
+      (productItem) => current.slug === productItem.slug
+    );
+    return total + product.price * current.productCount;
+  }, 0);
+  return total;
+}
+function handelIncreament(cartItems, setCartItems, product) {
+  const items = cartItems.map((item) => {
+    if (item.slug === product.slug) {
+      return {
+        slug: item.slug,
+        productCount: item.productCount + 1,
+      };
+    } else {
+      return item;
+    }
+  });
+  setCartItems(items);
+}
+function handelDecrement(cartItems, setCartItems, product) {
+  const items = cartItems.map((item) => {
+    if (item.slug === product.slug) {
+      return {
+        slug: item.slug,
+        productCount: item.productCount - 1,
+      };
+    } else {
+      return item;
+    }
+  });
+  setCartItems(items);
+}
+function removeItem(cartItems, setCartItems, product) {
+  const items = cartItems.filter((item) => item.slug !== product.slug);
+  setCartItems(items);
 }
