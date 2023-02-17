@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useCart } from "../Context/CartContext";
 import { useDataContext } from "../Context/DataContext";
 import { getTotal } from "./Navbar";
@@ -7,6 +7,44 @@ export default function Form() {
   const { cartItems, setCartItems } = useCart();
   const { products, isLoading } = useDataContext();
   const total = getTotal(cartItems, products);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phoneNumber: "",
+    address: "",
+    zipCode: "",
+    city: "",
+    country: "",
+    paymentMethod: "emoney",
+    eMoneyNumber: "",
+    eMoneyPin: "",
+  });
+  function handleChange(event) {
+    const { name, value, type, checked } = event.target;
+    setFormData((prevFormData) => {
+      return {
+        ...prevFormData,
+        [name]: value,
+      };
+    });
+  }
+  function handleRadio(event) {
+    const { name, value, type, checked } = event.target;
+    setFormData((prevFormData) => {
+      return {
+        ...prevFormData,
+        [name]: type === "checkbox" ? checked : value,
+      };
+    });
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    // submitToApi(formData)
+    console.log(formData);
+    setCartItems([]);
+  }
+
   return (
     <form>
       <div className="checkout">
@@ -15,64 +53,121 @@ export default function Form() {
           <legend>BILLING DETAILS</legend>
           <label>
             Name
-            <input type="text" placeholder="Alexei Ward" required />
+            <input
+              type="text"
+              placeholder="Alexei Ward"
+              required
+              onChange={handleChange}
+              name="name"
+              value={formData.name}
+            />
           </label>
           <label>
             Email Address
-            <input type="email" placeholder="alexei@mail.com" required />
+            <input
+              type="email"
+              placeholder="alexei@mail.com"
+              required
+              onChange={handleChange}
+              name="email"
+              value={formData.email}
+            />
           </label>
           <label>
             Phone Number
-            <input type="number" placeholder="+1 202-555-0136" required />
+            <input
+              type="number"
+              placeholder="+1 202-555-0136"
+              required
+              onChange={handleChange}
+              name="phoneNumber"
+              value={formData.phoneNumber}
+            />
           </label>
         </fieldset>
         <fieldset>
           <legend>SHIPPING INFO</legend>
           <label>
             Your Address
-            <input type="text" placeholder="1137 Williams Avenue" />
+            <input
+              type="text"
+              placeholder="1137 Williams Avenue"
+              name="address"
+            />
           </label>
           <label>
             ZIP Code
-            <input type="number" placeholder="10001" />
+            <input
+              type="number"
+              placeholder="10001"
+              required
+              onChange={handleChange}
+              name="zipCode"
+              value={formData.zipCode}
+            />
           </label>
           <label>
             City
-            <input placeholder="New York" type="text" />
+            <input
+              placeholder="New York"
+              type="text"
+              required
+              onChange={handleChange}
+              name="city"
+              value={formData.city}
+            />
           </label>
           <label>
             Country
-            <input type="text" placeholder="United States" />
+            <input
+              type="text"
+              placeholder="United States"
+              required
+              onChange={handleChange}
+              name="country"
+              value={formData.country}
+            />
           </label>
         </fieldset>
         <fieldset>
           <legend>PAYMENT DETAILS</legend>
           <div className="pay-method">
-            <div>
-              <input
-                type="radio"
-                id="emoney"
-                name="pay-method"
-                value="emoney"
-              />
-              <label htmlFor="emoney">e-Money</label>
-            </div>
-            <div>
-              <input type="radio" id="cash" name="pay-method" value="cash" />
-              <label htmlFor="cash">Cash</label>
-            </div>
+            <input
+              type="radio"
+              id="emoney"
+              name="paymentMethod"
+              value="emoney"
+              onChange={handleRadio}
+            />
+            <label htmlFor="emoney">e-Money</label>
+            <br />
+            <input
+              type="radio"
+              id="cash"
+              name="paymentMethod"
+              value="cash"
+              onChange={handleRadio}
+            />
+            <label htmlFor="cash">Cash On Delivery</label>
           </div>
-
-          <div>
-            <label>
-              e-Money Number
-              <input type="number" placeholder="238521993" />
-            </label>
-            <label>
-              e-Money Pin
-              <input type="number" placeholder="6891" />
-            </label>
-          </div>
+          {formData.paymentMethod === "emoney" ? (
+            <div>
+              <label>
+                e-Money Number
+                <input type="number" placeholder="238521993" />
+              </label>
+              <label>
+                e-Money Pin
+                <input type="number" placeholder="6891" />
+              </label>
+            </div>
+          ) : (
+            <p>
+              The ‘Cash on Delivery’ option enables you to pay in cash when our
+              delivery courier arrives at your residence. Just make sure your
+              address is correct so that your order will not be cancelled.
+            </p>
+          )}
         </fieldset>
       </div>
 
@@ -106,13 +201,15 @@ export default function Form() {
         </div>
         <div className="vat">
           <p>VAT (INCLUDED)</p>
-          <p>${total * 0.14}</p>
+          <p>${(total * 0.14).toFixed(2)}</p>
         </div>
         <div className="grand-total">
           <p>GRAND TOTAL</p>
-          <p>${total + 50 + total * 0.14}</p>
+          <p>${(total + 50 + total * 0.14).toFixed(2)}</p>
         </div>
-        <button className="link">CONTINUE & PAY</button>
+        <button onClick={handleSubmit} type="submit" className="link">
+          CONTINUE & PAY
+        </button>
       </div>
     </form>
   );

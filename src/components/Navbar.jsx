@@ -99,7 +99,11 @@ export default function Navbar() {
                       <div className="btns">
                         <button
                           onClick={() => {
-                            handelDecrement(cartItems, setCartItems, product);
+                            if (item.productCount == 1) {
+                              removeItem(cartItems, setCartItems, product);
+                            } else {
+                              handelDecrement(cartItems, setCartItems, product);
+                            }
                           }}
                         >
                           -

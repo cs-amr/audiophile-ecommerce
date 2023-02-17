@@ -10,6 +10,7 @@ import Earphones from "./pages/Earphones";
 import Speakers from "./pages/Speakers";
 import Product from "./pages/Product";
 import Checkout from "./pages/Checkout";
+import Error from "./pages/Error";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -22,6 +23,7 @@ export const router = createBrowserRouter(
       <Route path="earphones" element={<Earphones />} />
       <Route path="/earphones/:productId" element={<Product />} />
       <Route path="checkout" element={<Checkout />} />
+      <Route path="*" element={<Error />} />
     </Route>
   )
 );

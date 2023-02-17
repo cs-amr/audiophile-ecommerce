@@ -50,6 +50,7 @@ export default function Product() {
     });
   }
   const navigate = useNavigate();
+
   return (
     <section className="product">
       <div className="container">
@@ -163,14 +164,9 @@ export default function Product() {
                     <img src={mobile} alt={product["name"]} />
                   </picture>
                   <span className="product-name">{product["name"]}</span>
-                  <button
-                    className="link"
-                    onClick={() => {
-                      navigate(product["slug"]);
-                    }}
-                  >
+                  <Link to={`../${product["slug"]}`} className="link">
                     SEE PRODUCT
-                  </button>
+                  </Link>
                 </div>
               );
             })}
