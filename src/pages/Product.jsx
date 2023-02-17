@@ -5,8 +5,25 @@ import Loading from "../components/Loading";
 import { useCart } from "../Context/CartContext";
 export default function Product() {
   const { productId } = useParams();
-  const { products, isLoading } = useDataContext();
+  const [products, setProducts] = useState([]);
+  const { cartItems, setCartItems } = useCart();
+  const [isLoading, setIsLoading] = useState(true);
   const [productCount, setProductCount] = useState(1);
+  async function fetchData() {
+    const res = await fetch("/src/products.json");
+    const data = await res.json();
+    setIsLoading(false);
+    setProducts(data);
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  if (isLoading) {
+    return <h1>...</h1>;
+  }
+
   const product = products.products.find(
     (product) => product.slug === productId
   );
@@ -28,7 +45,6 @@ export default function Product() {
     others,
   } = product;
   const { first, second, third } = gallery;
-  const { cartItems, setCartItems } = useCart();
   function handleClick() {
     setCartItems((prev) => {
       const exist = prev.find((item) => item.slug === slug);
@@ -49,7 +65,6 @@ export default function Product() {
       }
     });
   }
-  const navigate = useNavigate();
 
   return (
     <section className="product">

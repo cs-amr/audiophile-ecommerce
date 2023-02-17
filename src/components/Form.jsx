@@ -7,6 +7,7 @@ export default function Form() {
   const { cartItems, setCartItems } = useCart();
   const { products, isLoading } = useDataContext();
   const total = getTotal(cartItems, products);
+  const grandTotal = (total + 50 + total * 0.14).toFixed(2);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -15,10 +16,13 @@ export default function Form() {
     zipCode: "",
     city: "",
     country: "",
-    paymentMethod: "emoney",
+    paymentMethod: "",
     eMoneyNumber: "",
     eMoneyPin: "",
+    grandTotal,
+    cartItems,
   });
+  console.log(formData);
   function handleChange(event) {
     const { name, value, type, checked } = event.target;
     setFormData((prevFormData) => {
@@ -41,7 +45,7 @@ export default function Form() {
   function handleSubmit(event) {
     event.preventDefault();
     // submitToApi(formData)
-    console.log(formData);
+    console.log(JSON.stringify(formData));
     setCartItems([]);
   }
 
@@ -154,11 +158,23 @@ export default function Form() {
             <div>
               <label>
                 e-Money Number
-                <input type="number" placeholder="238521993" />
+                <input
+                  type="number"
+                  placeholder="238521993"
+                  onChange={handleChange}
+                  name="eMoneyNumber"
+                  value={formData.eMoneyNumber}
+                />
               </label>
               <label>
                 e-Money Pin
-                <input type="number" placeholder="6891" />
+                <input
+                  type="number"
+                  placeholder="6891"
+                  onChange={handleChange}
+                  name="eMoneyPin"
+                  value={formData.eMoneyPin}
+                />
               </label>
             </div>
           ) : (
@@ -205,7 +221,7 @@ export default function Form() {
         </div>
         <div className="grand-total">
           <p>GRAND TOTAL</p>
-          <p>${(total + 50 + total * 0.14).toFixed(2)}</p>
+          <p>${grandTotal}</p>
         </div>
         <button onClick={handleSubmit} type="submit" className="link">
           CONTINUE & PAY

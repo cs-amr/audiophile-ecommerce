@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useCart } from "../Context/CartContext";
 import { useDataContext } from "../Context/DataContext";
@@ -12,7 +12,18 @@ export default function Navbar() {
     (productCount, item) => productCount + item.productCount,
     0
   );
-  const { products, isLoading } = useDataContext();
+  const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  async function fetchData() {
+    const res = await fetch("/src/products.json");
+    const data = await res.json();
+    setIsLoading(false);
+    setProducts(data);
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, []);
   const total = getTotal(cartItems, products);
   const navigate = useNavigate();
   return (
