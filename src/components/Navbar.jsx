@@ -1,7 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useCart } from "../Context/CartContext";
-import { useDataContext } from "../Context/DataContext";
 import Nav from "./Nav";
 
 export default function Navbar() {
