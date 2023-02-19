@@ -3,8 +3,6 @@ import { useDataContext } from "../Context/DataContext";
 import Categories from "./Categories";
 
 export default function Landing() {
-  const data = useDataContext();
-
   return (
     <section className="landing">
       <div className="landing container">
