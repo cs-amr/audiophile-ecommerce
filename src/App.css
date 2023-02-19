@@ -93,7 +93,7 @@ h6 {
 .container {
   max-width: 1110px;
   margin-inline: auto;
-  width: min(1110px, calc(100%-4rem));
+  width: min(1110px, 100%-4rem);
 }
 
 @keyframes faddin {
