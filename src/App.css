@@ -709,7 +709,7 @@ p {
 /* _____________person_____________ */
 .person .container {
   max-width: 1110px;
-  width: min(1110px, calc(100%-4rem));
+  width: min(1110px, 100%-4rem);
   display: flex;
   margin-top: 120px;
   align-items: center;
