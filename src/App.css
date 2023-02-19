@@ -555,7 +555,6 @@ p {
 }
 .zx9-home {
   display: flex;
-  background: url("./images/home/desktop/pattern-circles.svg");
   background-repeat: no-repeat;
   background-size: contain;
   background-color: var(--secondary-clr);
