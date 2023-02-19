@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { useDataContext } from "../Context/DataContext";
 import Categories from "./Categories";
 
 export default function Landing() {
