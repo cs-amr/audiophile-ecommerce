@@ -15,7 +15,7 @@ export default function Navbar() {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   async function fetchData() {
-    const res = await fetch("/src/products.json");
+    const res = await fetch("../products.json");
     const data = await res.json();
     setIsLoading(false);
     setProducts(data);
