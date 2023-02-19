@@ -6,7 +6,7 @@ export function useFetchProducts(productCategory) {
   const [isLoading, setIsLoading] = useState(true);
   const [productsState, setProductsState] = useState([]);
   async function fetchProducts() {
-    const res = await fetch("/src/products.json");
+    const res = await fetch("/public/products.json");
     const data = await res.json();
     setProducts(data);
     setIsLoading(false);
