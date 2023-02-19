@@ -5,11 +5,9 @@ import { router } from "./routes";
 
 function App() {
   return (
-    <DataProvider>
-      <CartProvider>
-        <RouterProvider router={router} />
-      </CartProvider>
-    </DataProvider>
+    <CartProvider>
+      <RouterProvider router={router} />
+    </CartProvider>
   );
 }
 
