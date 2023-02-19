@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { useDataContext } from "../Context/DataContext";
 import Loading from "../components/Loading";
 import { useCart } from "../Context/CartContext";
 export default function Product() {
