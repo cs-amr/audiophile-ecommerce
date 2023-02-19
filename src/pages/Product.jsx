@@ -10,7 +10,7 @@ export default function Product() {
   const [isLoading, setIsLoading] = useState(true);
   const [productCount, setProductCount] = useState(1);
   async function fetchData() {
-    const res = await fetch("/src/products.json");
+    const res = await fetch("../products.json");
     const data = await res.json();
     setIsLoading(false);
     setProducts(data);
