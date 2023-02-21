@@ -19,9 +19,10 @@ export default function Navbar() {
     setIsLoading(false);
     setProducts(data);
   }
-
   useEffect(() => {
-    fetchData();
+    if (isLoading) {
+      fetchData();
+    }
   }, []);
   const total = getTotal(cartItems, products);
   const navigate = useNavigate();

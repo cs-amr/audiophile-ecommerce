@@ -2,19 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useCart } from "../Context/CartContext";
 import { getTotal } from "./Navbar";
 
-export default function Form() {
-  const [products, setProducts] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  async function fetchData() {
-    const res = await fetch("../products.json");
-    const data = await res.json();
-    setIsLoading(false);
-    setProducts(data);
-  }
-
-  useEffect(() => {
-    fetchData();
-  }, []);
+export default function Form({ products }) {
   const { cartItems, setCartItems } = useCart();
   const total = getTotal(cartItems, products);
   const grandTotal = (total + 50 + total * 0.14).toFixed(2);
@@ -232,7 +220,7 @@ export default function Form() {
           <p>GRAND TOTAL</p>
           <p>${grandTotal}</p>
         </div>
-        <button onClick={handleSubmit} type="submit" className="link">
+        <button onSubmit={handleSubmit} type="submit" className="link">
           CONTINUE & PAY
         </button>
       </div>
