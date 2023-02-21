@@ -325,6 +325,11 @@ header .categories {
 nav.nav .categories .container {
   padding-inline: 0;
 }
+@media screen and (min-width: 1110px) {
+  header .container .nav {
+    display: none;
+  }
+}
 nav.nav {
   padding-block: 143px 80px;
   background-color: white;
